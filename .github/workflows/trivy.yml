@@ -22,7 +22,7 @@ name: "Trivy Security Scan"
 
 on:
   push:
-    branches: [main, fix/VM-14-spring-csrf-protection]
+    branches: [main]
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
