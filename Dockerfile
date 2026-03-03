@@ -24,11 +24,15 @@ COPY . /sdfactory/
 
 WORKDIR /sdfactory
 
-RUN mvn clean install -Dmaven.test.skip=true
+RUN mvn clean install -Dmaven.test.skip=true -Ddash.skip=true
 
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM eclipse-temurin:17.0.11_9-jdk
+
+RUN apt-get update && \
+    apt-get install -y --only-upgrade gpgv && \
+    rm -rf /var/lib/apt/lists/*
 
 ARG DEPENDENCY=/sdfactory/target/dependency
 
