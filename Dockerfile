@@ -24,7 +24,7 @@ COPY . /sdfactory/
 
 WORKDIR /sdfactory
 
-RUN mvn clean install -Dmaven.test.skip=true
+RUN mvn clean install -Dmaven.test.skip=true -Ddash.skip=true
 
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
